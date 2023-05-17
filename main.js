@@ -1248,7 +1248,7 @@
 fetch('https://api.openweathermap.org/data/2.5/weather?lat=51.18&lon=71.45&appid=87518c092f437a178c4f99de30a85995')
 .then(function (resp) {return resp.json()})
 .then(function (data){
-    // document.querySelector('.icon').innerHTML = `<img src ='https://openweathermap.org/img/wn/${data.weather[0][`icon`]}@2x.png'>`
+    document.querySelector('.icon').innerHTML = `<img src ='https://openweathermap.org/img/wn/${data.weather[0][`icon`]}@2x.png'>`
     console.log(data);
     document.querySelector('.city-name').innerHTML = data.name 
     document.querySelector('.city-name').textContent = data.name 
@@ -1256,7 +1256,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?lat=51.18&lon=71.45&appid
     document.querySelector('.temp').textContent = Math.round((data.main.temp -273) ) + '°C'
     document.querySelector('.weather').textContent= data.weather[0]['description']
     document.querySelector('.wind.speed').textContent= Math.round(data.wind.speed)
-    document.querySelector('.humidity').textContent= Math.round(data.humidity)  
-    document.querySelector('.city-sun.rise').textContent= Math.round(data.city-sun.rise)
-    document.querySelector('.city-sun.set').textContent= Math.round(data.city-sun.set)
+    document.querySelector('.humidity').textContent= data.main.humidity +"%";  
+    document.querySelector('.sunrise').textContent= Math.round(data.sunrise)
+    document.querySelector('.sunset').textContent= Math.round(data.sunset)
+
+
 })
